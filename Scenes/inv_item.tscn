@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/inv_item.gd" type="Script" id=2]
+[ext_resource path="res://Assets/select_square.png" type="Texture" id=3]
+
+[node name="inv_item" type="TextureButton"]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 1
+texture_normal = ExtResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 28.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

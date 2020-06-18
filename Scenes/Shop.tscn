@@ -1,0 +1,192 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Shop.gd" type="Script" id=1]
+[ext_resource path="res://Assets/shop_background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/shopkeeper.png" type="Texture" id=3]
+[ext_resource path="res://Assets/fruit_stand.png" type="Texture" id=4]
+[ext_resource path="res://Assets/coin.png" type="Texture" id=5]
+[ext_resource path="res://Assets/pixelfont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Assets/arrow2.png" type="Texture" id=8]
+[ext_resource path="res://Assets/back_arrow.png" type="Texture" id=9]
+[ext_resource path="res://Assets/hat_grape.png" type="Texture" id=10]
+[ext_resource path="res://Assets/shop_response_1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/shop_description.png" type="Texture" id=12]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -14 ), Vector2( 0, -13 ) ]
+}
+
+[node name="Shop" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Shopkeeper" type="Sprite" parent="."]
+position = Vector2( 0, -13 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shopkeeper"]
+anims/idle = SubResource( 1 )
+
+[node name="Stand" type="Sprite" parent="."]
+position = Vector2( 0, -13 )
+texture = ExtResource( 4 )
+
+[node name="response" type="Sprite" parent="."]
+visible = false
+position = Vector2( -11, -20 )
+texture = ExtResource( 11 )
+
+[node name="Description" type="TextureRect" parent="."]
+margin_left = -16.0
+margin_top = -9.0
+margin_right = 16.0
+margin_bottom = 13.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Description"]
+margin_left = 4.0
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 69.0
+rect_scale = Vector2( 0.25, 0.25 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "this is an example description for the item ii am testing how the printing works and now im wrting more random stuff to fill the"
+align = 1
+autowrap = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = -27.0
+margin_top = -48.0
+margin_right = 27.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 21.0
+margin_top = 4.0
+margin_right = 33.0
+margin_bottom = 12.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+margin_right = 8.0
+margin_bottom = 8.0
+texture = ExtResource( 5 )
+
+[node name="Money" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 12.0
+margin_right = 12.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 6 )
+align = 1
+valign = 1
+
+[node name="left_button" type="TextureButton" parent="."]
+margin_left = -20.0
+margin_top = 22.0
+margin_right = -13.0
+margin_bottom = 30.0
+rect_scale = Vector2( -1, 1 )
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right_button" type="TextureButton" parent="."]
+margin_left = 20.0
+margin_top = 22.0
+margin_right = 27.0
+margin_bottom = 30.0
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="TextureButton" parent="."]
+margin_left = -27.0
+margin_top = -49.0
+margin_right = -17.0
+margin_bottom = -39.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="current_item" type="Sprite" parent="."]
+position = Vector2( 0, 25 )
+texture = ExtResource( 10 )
+
+[node name="cost" type="Label" parent="."]
+margin_left = -10.0
+margin_top = 34.0
+margin_right = 30.0
+margin_bottom = 48.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 6 )
+text = "cost: 12"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="buy" type="Label" parent="."]
+margin_left = -10.0
+margin_top = 40.0
+margin_right = 30.0
+margin_bottom = 54.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 6 )
+text = "buy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="buy"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="response_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="print_timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+[connection signal="pressed" from="left_button" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="right_button" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="buy/TextureButton" to="." method="_on_buy_pressed"]
+[connection signal="timeout" from="response_timer" to="." method="_on_response_timer_timeout"]
+[connection signal="timeout" from="print_timer" to="." method="_on_print_timer_timeout"]

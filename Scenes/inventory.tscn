@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/inventory.gd" type="Script" id=1]
+[ext_resource path="res://Assets/menu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/pixelfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/close.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Theme" id=6]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 1 )
+HScrollBar/styles/grabber_highlight = SubResource( 2 )
+HScrollBar/styles/grabber_pressed = SubResource( 3 )
+HScrollBar/styles/scroll = SubResource( 4 )
+HScrollBar/styles/scroll_focus = SubResource( 5 )
+
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -432.0
+margin_bottom = -768.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 66.0
+margin_bottom = 84.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="CenterContainer" parent="."]
+margin_right = 80.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="Label" parent="Name"]
+margin_left = 19.0
+margin_top = 6.0
+margin_right = 60.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "inventory"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="CenterContainer" parent="."]
+margin_top = 10.0
+margin_right = 160.0
+margin_bottom = 60.0
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="description" type="Label" parent="Description"]
+margin_left = 52.0
+margin_top = 21.0
+margin_right = 108.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "select an item"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="TextureButton" parent="."]
+margin_left = 70.0
+margin_top = 1.0
+margin_right = 79.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="use" type="Label" parent="."]
+visible = false
+margin_left = 32.0
+margin_top = 90.0
+margin_right = 47.0
+margin_bottom = 98.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "USE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="use"]
+margin_left = -3.0
+margin_top = -1.0
+margin_right = 17.0
+margin_bottom = 9.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 1.0
+margin_top = 32.0
+margin_right = 79.0
+margin_bottom = 84.0
+theme = SubResource( 6 )
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+mouse_filter = 2
+custom_constants/vseparation = 4
+custom_constants/hseparation = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="use/Button" to="." method="_on_use_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

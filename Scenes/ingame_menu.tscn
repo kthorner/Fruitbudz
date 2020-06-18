@@ -1,0 +1,135 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/pixelfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/ingame_menu.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/ingame_menu.gd" type="Script" id=3]
+
+[node name="Menu" type="Control"]
+margin_left = -17.0
+margin_top = -22.0
+margin_right = -17.0
+margin_bottom = -22.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 68.0
+margin_bottom = 80.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="End" type="Control" parent="."]
+visible = false
+margin_left = 1.0
+margin_top = 25.0
+margin_right = 1.0
+margin_bottom = 25.0
+
+[node name="CenterContainer" type="CenterContainer" parent="End"]
+margin_right = 68.0
+margin_bottom = 26.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="End/CenterContainer"]
+margin_left = 13.0
+margin_right = 54.0
+margin_bottom = 26.0
+custom_constants/separation = 10
+
+[node name="Play Again" type="Label" parent="End/CenterContainer/VBoxContainer"]
+margin_right = 41.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 1 )
+text = "play again"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="End/CenterContainer/VBoxContainer/Play Again"]
+margin_right = 40.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Return" type="Label" parent="End/CenterContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 41.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+text = "return"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="End/CenterContainer/VBoxContainer/Return"]
+margin_right = 40.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leave" type="Control" parent="."]
+visible = false
+margin_left = 1.0
+margin_top = 22.0
+margin_right = 1.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Leave"]
+margin_right = 68.0
+margin_bottom = 36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Leave/CenterContainer"]
+margin_left = 8.0
+margin_right = 59.0
+margin_bottom = 36.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="Leave/CenterContainer/VBoxContainer"]
+margin_right = 51.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 1 )
+text = "leave game?"
+
+[node name="yes" type="Label" parent="Leave/CenterContainer/VBoxContainer"]
+margin_top = 14.0
+margin_right = 51.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 1 )
+text = "yes"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="Leave/CenterContainer/VBoxContainer/yes"]
+margin_left = 5.0
+margin_right = 45.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="no" type="Label" parent="Leave/CenterContainer/VBoxContainer"]
+margin_top = 28.0
+margin_right = 51.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 1 )
+text = "no"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="Leave/CenterContainer/VBoxContainer/no"]
+margin_left = 5.0
+margin_right = 45.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="End/CenterContainer/VBoxContainer/Play Again/TextureButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="End/CenterContainer/VBoxContainer/Return/TextureButton" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Leave/CenterContainer/VBoxContainer/yes/TextureButton" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Leave/CenterContainer/VBoxContainer/no/TextureButton" to="." method="_on_no_pressed"]

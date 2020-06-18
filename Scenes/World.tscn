@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/background.png" type="Texture" id=1]
+[ext_resource path="res://Assets/sky.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Sun_Moon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/clouds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/trees.png" type="Texture" id=5]
+[ext_resource path="res://Assets/fence.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Pet.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/darkness.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/stats.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/inventory.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/game_menu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/exclamation.png" type="Texture" id=13]
+[ext_resource path="res://Assets/gear.png" type="Texture" id=14]
+[ext_resource path="res://Assets/grave.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/main_menu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Scenes/World.gd" type="Script" id=17]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 17 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="sky" type="Sprite" parent="."]
+modulate = Color( 0.231373, 0.729412, 1, 1 )
+position = Vector2( 0, -32 )
+texture = ExtResource( 2 )
+
+[node name="Sun_Moon" parent="." instance=ExtResource( 3 )]
+position = Vector2( -19.3712, -40.6794 )
+
+[node name="Clouds" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -32 )
+
+[node name="trees" type="Sprite" parent="."]
+position = Vector2( 21, -23 )
+texture = ExtResource( 5 )
+
+[node name="fence" type="Sprite" parent="."]
+visible = false
+position = Vector2( -10, -18 )
+texture = ExtResource( 6 )
+
+[node name="Items" type="YSort" parent="."]
+
+[node name="Pet" parent="." instance=ExtResource( 7 )]
+
+[node name="darkness" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -5 )
+texture = ExtResource( 8 )
+
+[node name="GUI" parent="." instance=ExtResource( 9 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -27.0
+margin_top = 38.0
+margin_right = 27.0
+margin_bottom = 48.0
+
+[node name="Stats" parent="." instance=ExtResource( 10 )]
+visible = false
+margin_left = -23.0
+margin_top = -28.0
+margin_right = -23.0
+margin_bottom = -28.0
+
+[node name="Inventory" parent="." instance=ExtResource( 11 )]
+visible = false
+margin_left = -20.0
+margin_top = -30.0
+margin_right = 46.0
+margin_bottom = 54.0
+
+[node name="Game Menu" parent="." instance=ExtResource( 12 )]
+visible = false
+margin_left = -20.0
+margin_top = -30.0
+margin_right = 46.0
+margin_bottom = 54.0
+
+[node name="main_menu" parent="." instance=ExtResource( 16 )]
+visible = false
+margin_left = -20.0
+margin_top = -30.0
+margin_right = -20.0
+margin_bottom = -30.0
+
+[node name="Settings" type="TextureButton" parent="."]
+margin_left = 20.0
+margin_top = -48.0
+margin_right = 33.0
+margin_bottom = -35.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exclamation" type="Sprite" parent="."]
+visible = false
+position = Vector2( 23, 32 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 13 )
+
+[node name="grave" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 15 )
+[connection signal="pressed" from="Settings" to="." method="_on_Settings_pressed"]

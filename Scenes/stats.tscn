@@ -1,0 +1,282 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Stats.gd" type="Script" id=1]
+[ext_resource path="res://Assets/stat_menu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/pixelfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/star.png" type="Texture" id=4]
+[ext_resource path="res://Assets/close.png" type="Texture" id=5]
+[ext_resource path="res://Assets/stat_tab1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/stat_tab2.png" type="Texture" id=7]
+
+
+[node name="Stats" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -432.0
+margin_bottom = -768.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 90.0
+margin_bottom = 90.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Information" type="VBoxContainer" parent="."]
+margin_right = 90.0
+margin_bottom = 90.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Information"]
+margin_top = 4.0
+margin_right = 90.0
+margin_bottom = 24.0
+
+[node name="Pet Info" type="VBoxContainer" parent="Information/CenterContainer"]
+margin_left = 32.0
+margin_right = 57.0
+margin_bottom = 20.0
+
+[node name="Name" type="Label" parent="Information/CenterContainer/Pet Info"]
+margin_right = 25.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "vinny "
+
+[node name="Age" type="Label" parent="Information/CenterContainer/Pet Info"]
+margin_top = 12.0
+margin_right = 25.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "age: 3"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Information"]
+margin_top = 32.0
+margin_right = 90.0
+margin_bottom = 65.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Information/CenterContainer2"]
+margin_left = 5.0
+margin_right = 85.0
+margin_bottom = 33.0
+
+[node name="Meters" type="HBoxContainer" parent="Information/CenterContainer2/VBoxContainer"]
+margin_right = 37.0
+margin_bottom = 33.0
+
+[node name="Column1" type="VBoxContainer" parent="Information/CenterContainer2/VBoxContainer/Meters"]
+margin_right = 24.0
+margin_bottom = 33.0
+custom_constants/separation = 3
+alignment = 1
+
+[node name="Food" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters/Column1"]
+margin_right = 24.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0.501961, 0.0431373, 1 )
+text = "food"
+
+[node name="Water" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters/Column1"]
+margin_top = 11.0
+margin_right = 24.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0.0117647, 0.819608, 1 )
+text = "water"
+
+[node name="Sun" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters/Column1"]
+margin_top = 22.0
+margin_right = 24.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.631373, 0, 1 )
+text = "sun"
+
+[node name="CenterContainer" type="CenterContainer" parent="Information/CenterContainer2/VBoxContainer/Meters/Column1"]
+margin_top = 33.0
+margin_right = 24.0
+margin_bottom = 33.0
+
+[node name="Column2" type="VBoxContainer" parent="Information/CenterContainer2/VBoxContainer/Meters"]
+margin_left = 28.0
+margin_right = 37.0
+margin_bottom = 33.0
+custom_constants/separation = 3
+
+[node name="food_value" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters/Column2"]
+margin_right = 9.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+
+[node name="water_value" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters/Column2"]
+margin_top = 11.0
+margin_right = 9.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+
+[node name="sun_value" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters/Column2"]
+margin_top = 22.0
+margin_right = 9.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+
+[node name="Meters2" type="HBoxContainer" parent="Information/CenterContainer2/VBoxContainer"]
+margin_left = 41.0
+margin_right = 80.0
+margin_bottom = 33.0
+
+[node name="Column1" type="VBoxContainer" parent="Information/CenterContainer2/VBoxContainer/Meters2"]
+margin_right = 26.0
+margin_bottom = 33.0
+custom_constants/separation = 3
+alignment = 1
+
+[node name="Health" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column1"]
+margin_right = 26.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.831373, 0, 0, 1 )
+text = "health"
+
+[node name="Happy" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column1"]
+margin_top = 11.0
+margin_right = 26.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.580392, 0, 0.87451, 1 )
+text = "happy"
+
+[node name="Sweet" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column1"]
+margin_top = 22.0
+margin_right = 26.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.466667, 0.741176, 1 )
+text = "sweet"
+
+[node name="CenterContainer" type="CenterContainer" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column1"]
+margin_top = 33.0
+margin_right = 26.0
+margin_bottom = 33.0
+
+[node name="Column2" type="VBoxContainer" parent="Information/CenterContainer2/VBoxContainer/Meters2"]
+margin_left = 30.0
+margin_right = 39.0
+margin_bottom = 33.0
+custom_constants/separation = 3
+
+[node name="health_value" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column2"]
+margin_right = 9.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+
+[node name="happy_value" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column2"]
+margin_top = 11.0
+margin_right = 9.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+
+[node name="sweet_value" type="Label" parent="Information/CenterContainer2/VBoxContainer/Meters2/Column2"]
+margin_top = 22.0
+margin_right = 9.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "10"
+align = 1
+
+[node name="CenterContainer3" type="CenterContainer" parent="Information"]
+margin_top = 73.0
+margin_right = 90.0
+margin_bottom = 86.0
+
+[node name="Stars" type="HBoxContainer" parent="Information/CenterContainer3"]
+margin_left = 16.0
+margin_right = 74.0
+margin_bottom = 13.0
+custom_constants/separation = 2
+
+[node name="TextureRect" type="TextureRect" parent="Information/CenterContainer3/Stars"]
+margin_right = 13.0
+margin_bottom = 13.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect2" type="TextureRect" parent="Information/CenterContainer3/Stars"]
+margin_left = 15.0
+margin_right = 28.0
+margin_bottom = 13.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect3" type="TextureRect" parent="Information/CenterContainer3/Stars"]
+margin_left = 30.0
+margin_right = 43.0
+margin_bottom = 13.0
+texture = ExtResource( 4 )
+
+[node name="TextureRect4" type="TextureRect" parent="Information/CenterContainer3/Stars"]
+margin_left = 45.0
+margin_right = 58.0
+margin_bottom = 13.0
+texture = ExtResource( 4 )
+
+[node name="Information2" type="VBoxContainer" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="TextureButton" parent="."]
+margin_left = 80.0
+margin_top = 1.0
+margin_right = 89.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 5 )
+
+[node name="tab1" type="TextureButton" parent="."]
+margin_top = 90.0
+margin_right = 45.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tab2" type="TextureButton" parent="."]
+margin_left = 46.0
+margin_top = 90.0
+margin_right = 91.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="tab1" to="." method="_on_tab1_pressed"]
+[connection signal="pressed" from="tab2" to="." method="_on_tab2_pressed"]

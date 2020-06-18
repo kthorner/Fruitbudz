@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/GUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/uibar.png" type="Texture" id=2]
+[ext_resource path="res://Assets/arrow2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/stats.png" type="Texture" id=5]
+[ext_resource path="res://Assets/inventory.png" type="Texture" id=6]
+[ext_resource path="res://Assets/games.png" type="Texture" id=7]
+[ext_resource path="res://Assets/shop.png" type="Texture" id=8]
+[ext_resource path="res://Assets/food.png" type="Texture" id=9]
+[ext_resource path="res://Assets/water.png" type="Texture" id=10]
+[ext_resource path="res://Assets/praise.png" type="Texture" id=11]
+[ext_resource path="res://Assets/punish.png" type="Texture" id=12]
+
+
+[node name="GUI" type="Control"]
+margin_right = 45.0
+margin_bottom = 10.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 54.0
+margin_bottom = 10.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="TextureButton" parent="."]
+margin_left = 7.0
+margin_top = 1.0
+margin_right = 13.0
+margin_bottom = 9.0
+rect_scale = Vector2( -1, 1 )
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow2" type="TextureButton" parent="."]
+margin_left = 47.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 9.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main" type="HBoxContainer" parent="."]
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 11.0
+mouse_filter = 2
+custom_constants/separation = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="TextureButton" parent="main"]
+margin_left = 10.0
+margin_right = 16.0
+margin_bottom = 10.0
+action_mode = 0
+texture_normal = ExtResource( 5 )
+
+[node name="Inventory" type="TextureButton" parent="main"]
+margin_left = 19.0
+margin_right = 25.0
+margin_bottom = 10.0
+action_mode = 0
+texture_normal = ExtResource( 6 )
+
+[node name="Games" type="TextureButton" parent="main"]
+margin_left = 28.0
+margin_right = 36.0
+margin_bottom = 10.0
+action_mode = 0
+texture_normal = ExtResource( 7 )
+
+[node name="Shop" type="TextureButton" parent="main"]
+margin_left = 39.0
+margin_right = 44.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 8 )
+
+[node name="care" type="HBoxContainer" parent="."]
+visible = false
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 11.0
+mouse_filter = 2
+custom_constants/separation = 3
+alignment = 1
+
+[node name="Food" type="TextureRect" parent="care"]
+margin_left = 9.0
+margin_right = 15.0
+margin_bottom = 10.0
+mouse_filter = 2
+texture = ExtResource( 9 )
+
+[node name="Water" type="TextureRect" parent="care"]
+margin_left = 18.0
+margin_right = 23.0
+margin_bottom = 10.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+
+[node name="Praise" type="TextureButton" parent="care"]
+margin_left = 26.0
+margin_right = 34.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 11 )
+
+[node name="Punish" type="TextureButton" parent="care"]
+margin_left = 37.0
+margin_right = 45.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 12 )
+[connection signal="pressed" from="arrow" to="." method="_on_Arrow_pressed"]
+[connection signal="pressed" from="arrow2" to="." method="_on_Arrow_pressed"]
+[connection signal="pressed" from="main/Stats" to="." method="_on_Stats_pressed"]
+[connection signal="pressed" from="main/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="main/Games" to="." method="_on_Games_pressed"]
+[connection signal="pressed" from="main/Shop" to="." method="_on_Shop_pressed"]
+[connection signal="pressed" from="care/Praise" to="." method="_on_Praise_pressed"]
+[connection signal="pressed" from="care/Punish" to="." method="_on_Punish_pressed"]

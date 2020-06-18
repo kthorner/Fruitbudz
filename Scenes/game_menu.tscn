@@ -1,0 +1,142 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/game_menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/menu.png" type="Texture" id=2]
+[ext_resource path="res://Assets/pixelfont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/close.png" type="Texture" id=4]
+
+[node name="Game Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -432.0
+margin_bottom = -768.0
+rect_scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 66.0
+margin_bottom = 84.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_right = 80.0
+margin_bottom = 102.0
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 13.0
+margin_top = 11.0
+margin_right = 67.0
+margin_bottom = 91.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 54.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "fruit shuffle"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label"]
+margin_right = 50.0
+margin_bottom = 8.0
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 12.0
+margin_right = 54.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "pick and pack"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label2"]
+margin_right = 50.0
+margin_bottom = 8.0
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 54.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ninja dodger"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label3"]
+margin_right = 50.0
+margin_bottom = 8.0
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 54.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "farm frenzy"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label4"]
+margin_right = 50.0
+margin_bottom = 8.0
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 54.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "bud bounce"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label5"]
+margin_right = 50.0
+margin_bottom = 8.0
+
+[node name="Label6" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 54.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "fruit hoops"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label6"]
+margin_right = 50.0
+margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 54.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "rainbow ride"
+
+[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer/Label7"]
+margin_right = 50.0
+margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close" type="TextureButton" parent="."]
+margin_left = 70.0
+margin_top = 1.0
+margin_right = 79.0
+margin_bottom = 10.0
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label/TextureButton" to="." method="_on_finder_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label2/TextureButton" to="." method="_on_sorter_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label3/TextureButton" to="." method="_on_dodger_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label4/TextureButton" to="." method="_on_farmer_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label5/TextureButton" to="." method="_on_jumper_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label6/TextureButton" to="." method="_on_thrower_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Label7/TextureButton" to="." method="_on_runner_pressed"]
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

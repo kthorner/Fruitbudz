@@ -1,0 +1,160 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Jumper.gd" type="Script" id=1]
+[ext_resource path="res://Assets/jumper_background.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/bounce_bud.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/leaf2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/pixelfont.tres" type="DynamicFont" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 12 )
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 1.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10, 100 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 47, 10 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 47, 10 )
+
+[node name="Jumper" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Buds" type="Node2D" parent="."]
+
+[node name="Bud" parent="Buds" instance=ExtResource( 3 )]
+position = Vector2( 0, -60 )
+
+[node name="Leaf" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 38 )
+collision_layer = 0
+collision_mask = 2
+motion/sync_to_physics = true
+
+[node name="Sprite" type="Sprite" parent="Leaf"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf"]
+position = Vector2( 0, -3 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="move_area" type="Area2D" parent="Leaf"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf/move_area"]
+shape = SubResource( 2 )
+
+[node name="detect_area" type="Area2D" parent="Leaf"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leaf/detect_area"]
+position = Vector2( 0, -3 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="Wall 1" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall 1"]
+position = Vector2( -37, 0 )
+shape = SubResource( 4 )
+
+[node name="Wall 2" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall 2"]
+position = Vector2( 37, 0 )
+shape = SubResource( 4 )
+
+[node name="Wall 3" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall 3"]
+position = Vector2( 0, -75 )
+shape = SubResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 75 )
+shape = SubResource( 6 )
+
+[node name="Score" type="Label" parent="."]
+margin_left = -25.0
+margin_top = -48.0
+margin_right = -15.0
+margin_bottom = -38.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Menu" type="CenterContainer" parent="."]
+visible = false
+margin_left = -10.0
+margin_top = -20.0
+margin_right = 31.0
+margin_bottom = 4.0
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+margin_right = 41.0
+margin_bottom = 24.0
+custom_constants/separation = 8
+
+[node name="play" type="Label" parent="Menu/VBoxContainer"]
+margin_right = 41.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 5 )
+text = "play again"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="Menu/VBoxContainer/play"]
+margin_right = 40.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="return" type="Label" parent="Menu/VBoxContainer"]
+margin_top = 16.0
+margin_right = 41.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 5 )
+text = "return"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="Menu/VBoxContainer/return"]
+margin_right = 40.0
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="input_event" from="Leaf/move_area" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_exited" from="Leaf/move_area" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="body_entered" from="Leaf/detect_area" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="pressed" from="Menu/VBoxContainer/play/TextureButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/VBoxContainer/return/TextureButton" to="." method="_on_return_pressed"]
